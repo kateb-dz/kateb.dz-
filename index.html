@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>Kateb.dz - السيرة الذاتية الجزائرية</title>
+    <style>
+        * { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #f5f9ff; color: #333; }
+        .header { background: linear-gradient(to right, #00634e, #00a86b); color: white; padding: 30px; text-align: center; }
+        .container { max-width: 800px; margin: 30px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,99,78,0.1); }
+        h1 { margin-bottom: 20px; color: #00634e; }
+        .form-group { margin: 20px 0; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; color: #555; }
+        input, textarea, select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; }
+        button { background: #00634e; color: white; padding: 15px 30px; border: none; border-radius: 8px; font-size: 18px; cursor: pointer; margin: 10px; }
+        .payment { background: #fff8e1; border-right: 5px solid #ff9800; padding: 20px; margin: 20px 0; }
+        .success { color: #00634e; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📄 Kateb.dz</h1>
+        <p>أنشئ سيرة ذاتية ذكية تجتاز أنظمة التوظيف الآلية في الجزائر</p>
+    </div>
+    
+    <div class="container">
+        <h2>🎯 معلوماتك الشخصية</h2>
+        <div class="form-group">
+            <label>الاسم الكامل:</label>
+            <input type="text" placeholder="أدخل اسمك الثلاثي">
+        </div>
+        
+        <div class="form-group">
+            <label>رقم الهاتف:</label>
+            <input type="tel" placeholder="07XX XX XX XX">
+        </div>
+        
+        <div class="form-group">
+            <label>الولاية:</label>
+            <select>
+                <option>اختر ولايتك</option>
+                <option>الجزائر</option>
+                <option>وهران</option>
+                <option>قسنطينة</option>
+                <option>بومرداس</option>
+            </select>
+        </div>
+        
+        <div class="payment">
+            <h3>💳 طريقة الدفع: بريدي موب</h3>
+            <p>1. افتح تطبيق <strong>بريدي موب</strong></p>
+            <p>2. اختر <strong>"دفع فواتير"</strong></p>
+            <p>3. أدخل رقم التاجر: <code>07XX XX XX XX</code></p>
+            <p>4. المبلغ: <strong>150 دج</strong></p>
+        </div>
+        
+        <button onclick="analyzeATS()">🔍 تحليل ATS مجاني</button>
+        <button onclick="downloadCV()" style="background:#ff9800;">📥 حمل السيرة (50 دج)</button>
+        
+        <p id="result" class="success"></p>
+    </div>
+    
+    <script>
+        function analyzeATS() {
+            document.getElementById('result').innerHTML = 
+                '✅ تحليل ATS جاهز! ستحصل على 85/100 في الشركات الجزائرية';
+        }
+        function downloadCV() {
+            alert('ستنتقل إلى صفحة الدفع عبر بريدي موب');
+        }
+    </script>
+</body>
+</html>
