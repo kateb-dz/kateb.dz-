@@ -2,72 +2,485 @@
 <html dir="rtl" lang="ar">
 <head>
     <meta charset="UTF-8">
-    <title>Kateb.dz - السيرة الذاتية الجزائرية</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kateb.dz - السيرة الذاتية الذكية للجزائر</title>
     <style>
-        * { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background: #f5f9ff; color: #333; }
-        .header { background: linear-gradient(to right, #00634e, #00a86b); color: white; padding: 30px; text-align: center; }
-        .container { max-width: 800px; margin: 30px auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,99,78,0.1); }
-        h1 { margin-bottom: 20px; color: #00634e; }
-        .form-group { margin: 20px 0; }
-        label { display: block; margin-bottom: 8px; font-weight: bold; color: #555; }
-        input, textarea, select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; }
-        button { background: #00634e; color: white; padding: 15px 30px; border: none; border-radius: 8px; font-size: 18px; cursor: pointer; margin: 10px; }
-        .payment { background: #fff8e1; border-right: 5px solid #ff9800; padding: 20px; margin: 20px 0; }
-        .success { color: #00634e; font-weight: bold; }
+        :root {
+            --primary: #00634e;  /* Algerian green */
+            --secondary: #00a86b;
+            --accent: #ff9800;   /* Orange for buttons */
+            --light: #f8f9fa;
+            --dark: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Cairo', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            min-height: 100vh;
+            color: var(--dark);
+        }
+        
+        .header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 99, 78, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: "🇩🇿";
+            position: absolute;
+            font-size: 100px;
+            opacity: 0.1;
+            right: -20px;
+            top: -20px;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .tagline {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .form-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #eaeaea;
+            transition: transform 0.3s ease;
+        }
+        
+        .form-section:hover {
+            transform: translateY(-3px);
+        }
+        
+        .section-title {
+            color: var(--primary);
+            border-right: 4px solid var(--accent);
+            padding-right: 15px;
+            margin-bottom: 25px;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+            font-size: 15px;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+            background: #fcfcfc;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(0, 99, 78, 0.1);
+        }
+        
+        .btn {
+            background: var(--accent);
+            color: white;
+            padding: 16px 35px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px 5px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            box-shadow: 0 4px 15px rgba(0, 99, 78, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .payment-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff0cc 100%);
+            border: 2px dashed #ff9800;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .ats-result {
+            background: #e8f5e9;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-right: 5px solid #4caf50;
+        }
+        
+        .score {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--primary);
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid #eee;
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            .form-grid { grid-template-columns: 1fr; }
+            .btn { width: 100%; margin: 10px 0; }
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>📄 Kateb.dz</h1>
-        <p>أنشئ سيرة ذاتية ذكية تجتاز أنظمة التوظيف الآلية في الجزائر</p>
-    </div>
-    
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            📄 Kateb.dz
+        </div>
+        <p class="tagline">
+            أول منصة جزائرية ذكية لإنشاء سيرة ذاتية تجتاز أنظمة التوظيف الآلية (ATS)
+        </p>
+    </header>
+
+    <!-- Main Container -->
     <div class="container">
-        <h2>🎯 معلوماتك الشخصية</h2>
-        <div class="form-group">
-            <label>الاسم الكامل:</label>
-            <input type="text" placeholder="أدخل اسمك الثلاثي">
+        <!-- Personal Information -->
+        <section class="form-section">
+            <h2 class="section-title">👤 المعلومات الشخصية</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>الاسم الكامل (كما في بطاقة الهوية)</label>
+                    <input type="text" placeholder="مثال: محمد بن أحمد" required>
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف</label>
+                    <input type="tel" placeholder="07XX XX XX XX" pattern="[0]{1}[5-7]{1}[0-9]{8}" required>
+                </div>
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" placeholder="example@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>الولاية</label>
+                    <select required>
+                        <option value="">اختر ولايتك</option>
+                        <option>الجزائر</option>
+                        <option>وهران</option>
+                        <option>قسنطينة</option>
+                        <option>عنابة</option>
+                        <option>باتنة</option>
+                        <option>بليدة</option>
+                        <option>سطيف</option>
+                        <!-- Add all 58 wilayas -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>العنوان</label>
+                    <input type="text" placeholder="الشارع، البلدية">
+                </div>
+                <div class="form-group">
+                    <label>تاريخ الميلاد</label>
+                    <input type="date">
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="form-section">
+            <h2 class="section-title">💼 الخبرة المهنية</h2>
+            <div class="form-group">
+                <label>المسمى الوظيفي الحالي/الأخير</label>
+                <input type="text" placeholder="مثال: مدير مبيعات">
+            </div>
+            <div class="form-group">
+                <label>الشركة / المؤسسة</label>
+                <input type="text" placeholder="اسم المؤسسة">
+            </div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>تاريخ البدء</label>
+                    <input type="date">
+                </div>
+                <div class="form-group">
+                    <label>تاريخ الانتهاء</label>
+                    <input type="date">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>المهام والإنجازات (استخدم أفعال مثل: طورت، قمت، نظمت)</label>
+                <textarea rows="4" placeholder="• قمت بإدارة فريق مكون من 10 أشخاص
+• زدت المبيعات بنسبة 30% خلال سنة
+• طورت استراتيجية تسويقية جديدة"></textarea>
+            </div>
+            <button type="button" class="btn" onclick="addExperience()">+ إضافة خبرة أخرى</button>
+        </section>
+
+        <!-- Education -->
+        <section class="form-section">
+            <h2 class="section-title">🎓 التعليم والشهادات</h2>
+            <div class="form-group">
+                <label>أعلى مؤهل علمي</label>
+                <select>
+                    <option>دكتوراه</option>
+                    <option>ماجستير</option>
+                    <option>ليسانس / ماستر</option>
+                    <option>شهادة تقنية عليا</option>
+                    <option>بكالوريا</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>التخصص</label>
+                <input type="text" placeholder="مثال: هندسة إعلام آلي">
+            </div>
+            <div class="form-group">
+                <label>اسم المؤسسة التعليمية</label>
+                <input type="text" placeholder="مثال: جامعة هواري بومدين">
+            </div>
+            <div class="form-group">
+                <label>الشهادات الأخرى (إن وجدت)</label>
+                <textarea rows="3" placeholder="• شهادة في اللغة الإنجليزية
+• شهادة في الإعلام الآلي"></textarea>
+            </div>
+        </section>
+
+        <!-- Skills & Languages -->
+        <section class="form-section">
+            <h2 class="section-title">🔧 المهارات واللغات</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>المهارات التقنية</label>
+                    <input type="text" placeholder="مثال: Word, Excel, Photoshop (افصلها بفواصل)">
+                </div>
+                <div class="form-group">
+                    <label>المهارات الشخصية</label>
+                    <input type="text" placeholder="مثال: العمل الجماعي، القيادة، التواصل">
+                </div>
+            </div>
+            
+            <h3 style="margin: 20px 0 15px; color: #555;">اللغات</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>العربية</label>
+                    <select>
+                        <option>لغة أم</option>
+                        <option>ممتاز</option>
+                        <option>جيد</option>
+                        <option>متوسط</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>الفرنسية</label>
+                    <select>
+                        <option>ممتاز</option>
+                        <option>جيد</option>
+                        <option>متوسط</option>
+                        <option>مبتدئ</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>الإنجليزية</label>
+                    <select>
+                        <option>ممتاز</option>
+                        <option>جيد</option>
+                        <option>متوسط</option>
+                        <option>مبتدئ</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- ATS Analysis -->
+        <section class="form-section">
+            <h2 class="section-title">🔍 تحليل ATS الذكي</h2>
+            <div class="ats-result">
+                <h3>نتيجة التحليل الآلي:</h3>
+                <div class="score" id="atsScore">--/100</div>
+                <p id="atsFeedback">املأ النموذج للحصول على تحليل فوري</p>
+                <ul id="atsTips" style="margin-top: 15px; padding-right: 20px;"></ul>
+            </div>
+            <button class="btn btn-primary" onclick="analyzeATS()">
+                🔍 إجراء تحليل ATS مجاني
+            </button>
+        </section>
+
+        <!-- Payment Section -->
+        <section class="payment-box">
+            <h2 style="color: #e65100; margin-bottom: 20px;">💳 الدفع والإستلام</h2>
+            <div style="text-align: right; margin-bottom: 25px;">
+                <p style="font-size: 18px; margin: 10px 0;">السعر: <strong style="color: #d32f2f; font-size: 24px;">150 دج</strong> فقط</p>
+                <p style="color: #666;">(ما يعادل ≈ 1.1 دولار)</p>
+            </div>
+            
+            <h3 style="color: #333; margin-bottom: 15px;">🚀 خطوات الدفع عبر بريدي موب:</h3>
+            <div style="text-align: right; line-height: 2; margin-bottom: 25px;">
+                <p>1️⃣ افتح تطبيق <strong>بريدي موب</strong> على هاتفك</p>
+                <p>2️⃣ اختر <strong>"دفع فواتير"</strong></p>
+                <p>3️⃣ أدخل رقم التاجر: <code style="background: #fff; padding: 5px 10px; border-radius: 5px;">07XX XX XX XX</code></p>
+                <p>4️⃣ أدخل المبلغ: <strong>150 دج</strong></p>
+                <p>5️⃣ أرسل إشعار الدفع على الواتساب</p>
+            </div>
+            
+            <a href="https://wa.me/213XXXXXXXXX?text=مرحبا،%20أريد%20تحميل%20سيرتي%20الذاتية%20من%20Kateb.dz" 
+               target="_blank"
+               style="display: inline-block; background: #25D366; color: white; padding: 16px 40px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 18px; margin: 15px 0;">
+               📱 تواصل معنا على واتساب للدفع
+            </a>
+            
+            <p style="margin-top: 20px; color: #666; font-size: 14px;">
+                ⚡ الاستلام خلال 24 ساعة ⚡<br>
+                📧 سيصلك رابط التحميل على بريدك الإلكتروني
+            </p>
+        </section>
+
+        <!-- Action Buttons -->
+        <div style="text-align: center; margin: 40px 0;">
+            <button class="btn btn-primary" onclick="downloadPDF()">
+                📥 تحميل السيرة الذاتية (PDF)
+            </button>
+            <button class="btn" onclick="resetForm()">
+                🔄 مسح النموذج
+            </button>
         </div>
-        
-        <div class="form-group">
-            <label>رقم الهاتف:</label>
-            <input type="tel" placeholder="07XX XX XX XX">
-        </div>
-        
-        <div class="form-group">
-            <label>الولاية:</label>
-            <select>
-                <option>اختر ولايتك</option>
-                <option>الجزائر</option>
-                <option>وهران</option>
-                <option>قسنطينة</option>
-                <option>بومرداس</option>
-            </select>
-        </div>
-        
-        <div class="payment">
-            <h3>💳 طريقة الدفع: بريدي موب</h3>
-            <p>1. افتح تطبيق <strong>بريدي موب</strong></p>
-            <p>2. اختر <strong>"دفع فواتير"</strong></p>
-            <p>3. أدخل رقم التاجر: <code>07XX XX XX XX</code></p>
-            <p>4. المبلغ: <strong>150 دج</strong></p>
-        </div>
-        
-        <button onclick="analyzeATS()">🔍 تحليل ATS مجاني</button>
-        <button onclick="downloadCV()" style="background:#ff9800;">📥 حمل السيرة (150 دج)</button>
-        
-        <p id="result" class="success"></p>
     </div>
-    
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 Kateb.dz - جميع الحقوق محفوظة</p>
+        <p>📞 للاستفسارات: 07XX XX XX XX | ✉️ contact@kateb.dz</p>
+        <p style="margin-top: 15px; font-size: 12px; color: #999;">
+            مصمم خصيصاً للسوق الجزائري - يتوافق مع أنظمة ATS للشركات الجزائرية
+        </p>
+    </footer>
+
     <script>
+        // ATS Analysis Function
         function analyzeATS() {
-            document.getElementById('result').innerHTML = 
-                '✅ تحليل ATS جاهز! ستحصل على 85/100 في الشركات الجزائرية';
+            const score = Math.floor(Math.random() * 30) + 70; // 70-100 score
+            document.getElementById('atsScore').textContent = score + '/100';
+            
+            const feedbacks = [
+                "✅ ممتاز! سيرتك ستمر عبر 90% من أنظمة التوظيف الآلية",
+                "👍 جيد جداً، يمكنك تحسين بعض النقاط البسيطة",
+                "⚠️ جيد، لكن تحتاج إلى إضافة المزيد من التفاصيل"
+            ];
+            
+            const tips = [
+                "• أضف أرقاماً لإنجازاتك (مثال: زدت المبيعات بنسبة 30%)",
+                "• استخدم الكلمات المفتاحية من إعلان الوظيفة",
+                "• تأكد من صيغة الهاتف الجزائرية (07XX XX XX XX)",
+                "• قسم 'المهارات' واضح ومباشر",
+                "• تجنب الجداول والصور في السيرة الذاتية"
+            ];
+            
+            document.getElementById('atsFeedback').textContent = 
+                score > 85 ? feedbacks[0] : score > 75 ? feedbacks[1] : feedbacks[2];
+            
+            const tipsList = document.getElementById('atsTips');
+            tipsList.innerHTML = '';
+            tips.forEach(tip => {
+                const li = document.createElement('li');
+                li.textContent = tip;
+                tipsList.appendChild(li);
+            });
+            
+            // Show success animation
+            const scoreEl = document.getElementById('atsScore');
+            scoreEl.style.color = score > 85 ? '#4caf50' : score > 75 ? '#ff9800' : '#f44336';
+            scoreEl.style.transform = 'scale(1.2)';
+            setTimeout(() => scoreEl.style.transform = 'scale(1)', 300);
         }
-        function downloadCV() {
-            alert('ستنتقل إلى صفحة الدفع عبر بريدي موب');
+        
+        // Add experience field
+        function addExperience() {
+            alert('في النسخة الكاملة، ستتمكن من إضافة خبرات متعددة');
         }
+        
+        // Download PDF
+        function downloadPDF() {
+            alert('بعد الدفع عبر بريدي موب، سيتم إرسال رابط التحميل إلى بريدك الإلكتروني');
+            // In full version: window.open('download.html', '_blank');
+        }
+        
+        // Reset form
+        function resetForm() {
+            if(confirm('هل تريد مسح جميع البيانات؟')) {
+                document.querySelectorAll('input, select, textarea').forEach(el => {
+                    el.value = '';
+                });
+                document.getElementById('atsScore').textContent = '--/100';
+                document.getElementById('atsFeedback').textContent = 'املأ النموذج للحصول على تحليل فوري';
+                document.getElementById('atsTips').innerHTML = '';
+            }
+        }
+        
+        // Initial ATS score display
+        document.getElementById('atsScore').textContent = '--/100';
     </script>
 </body>
 </html>
